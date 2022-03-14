@@ -25,9 +25,6 @@ jobs:
         with:
           java-version: 11
 
-      - name: Run versionCatalogUpdate
-        run: ./gradlew formatKotlin
-
       - run: echo "123" > ./app/src/main/java/com/example/startandroidpainting145/DrawPolyToPoly2Dots.kt
 
       - uses: EndBug/add-and-commit@v9
