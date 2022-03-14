@@ -59,5 +59,4 @@ class DrawPolyToPoly3Dots(context: Context) : View(context) {
         canvas.drawLine(dst2[0], dst2[1], dst2[2], dst2[3], pBlack)
         canvas.drawLine(dst2[0], dst2[1], dst2[4], dst2[5], pGray)
     }
-
 }

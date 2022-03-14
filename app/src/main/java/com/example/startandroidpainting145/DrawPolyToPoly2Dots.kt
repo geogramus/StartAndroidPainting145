@@ -52,5 +52,4 @@ class DrawPolyToPoly2Dots(context: Context) : View(context) {
         canvas.drawPath(pathDst, p)
         canvas.drawLine(dst2[0], dst2[1], dst2[2], dst2[3], pBlack)
     }
-
 }

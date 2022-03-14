@@ -66,5 +66,4 @@ class DrawPolyToPoly4Dots(context: Context) : View(context) {
         canvas.drawLine(dst2[0], dst2[1], dst2[4], dst2[5], pGray)
         canvas.drawLine(dst2[0], dst2[1], dst2[6], dst2[7], pWhite)
     }
-
 }
