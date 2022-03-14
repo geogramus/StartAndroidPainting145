@@ -8,22 +8,6 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
-      - name: Create Branch
-        uses: peterjgrainger/action-create-branch@master
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          branch: 'dependencies'
-
-      - name: Checkout Branch
-        uses: actions/checkout@v3
-        with:
-          ref: 'dependencies'
-
-      - name: Set up JDK
-        uses: actions/setup-java@v1
-        with:
-          java-version: 11
 
       - run: echo "123" > ./app/src/main/java/com/example/startandroidpainting145/DrawPolyToPoly2Dots.kt
 
@@ -34,15 +18,5 @@ jobs:
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
-        with:
-          base: "master"
-          branch: "dependencies"
-          title: "dependencies"
-          delete-branch: true
-          token: ${{ secrets.GITHUB_TOKEN }}
-          team-reviewers: |
-              owners
-              maintainers
-          milestone: 1
-          draft: true
+
 
