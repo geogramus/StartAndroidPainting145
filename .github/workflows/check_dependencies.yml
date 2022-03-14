@@ -8,26 +8,41 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
-      - name: checking out code
-        uses: actions/checkout@v2
+      - name: Create Branch
+        uses: peterjgrainger/action-create-branch@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          branch: 'dependencies'
 
-      - name: extract git commit data
-        uses: rlespinasse/git-commit-data-action@v1.x
+      - name: Checkout Branch
+        uses: actions/checkout@v3
+        with:
+          ref: 'dependencies'
 
-      - name: Update author information
-        run: echo ${{ env.GIT_COMMIT_AUTHOR_NAME }} > AUTHOR
+      - name: Set up JDK
+        uses: actions/setup-java@v1
+        with:
+          java-version: 11
 
-      - name: Raise PR
+      - run: echo "123" > ./app/src/main/java/com/example/startandroidpainting145/DrawPolyToPoly2Dots.kt
+
+      - uses: EndBug/add-and-commit@v9
+        with:
+          default_author: github_actions
+          add: '*.kt'
+
+      - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
         with:
-          branch: "auto-pr-branch"
+          branch: "dependencies"
           base: main
-          title: "demo for auto pr"
-          committer: ${{ env.GIT_COMMIT_AUTHOR_NAME }} <${{ env.GIT_COMMIT_AUTHOR_EMAIL }}">
-          author: ${{ env.GIT_COMMIT_AUTHOR_NAME }} <${{ env.GIT_COMMIT_AUTHOR_EMAIL }}">
-          body:
-            This is to show automatic PR creation
-          token: ${{ secrets.GITHUB_TOKEN }}
+          title: "dependencies"
           delete-branch: true
-
+          token: ${{ secrets.GITHUB_TOKEN }}
+          team-reviewers: |
+            owners
+            maintainers
+          milestone: 1
+          draft: false
 
