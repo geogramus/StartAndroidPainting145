@@ -33,7 +33,7 @@ class DrawRectToRect(context: Context) : View(context) {
 
         rectangle.set(500f, 50f, 800f, 150f)
 
-        //Рисуем снеговика
+        // Рисуем снеговика
         paint.color = Color.BLUE
         canvas.drawPath(path, paint)
 
@@ -83,5 +83,4 @@ class DrawRectToRect(context: Context) : View(context) {
         paint.color = Color.BLUE
         canvas.drawPath(pathDst, paint)
     }
-
 }

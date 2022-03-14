@@ -47,5 +47,4 @@ class DrawPolyToPoly(context: Context) : View(context) {
         paint.color = Color.BLUE
         canvas.drawPath(pathDst, paint)
     }
-
 }
