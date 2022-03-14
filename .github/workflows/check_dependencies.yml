@@ -13,9 +13,12 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          name: 'dependencies'
+          branch: 'dependencies'
 
-      - uses: actions/checkout@v2
+      - name: Checkout Branch
+        uses: actions/checkout@v3
+        with:
+          ref: 'dependencies'
 
       - name: Set up JDK
         uses: actions/setup-java@v1
@@ -23,12 +26,18 @@ jobs:
           java-version: 11
 
       - name: Run versionCatalogUpdate
-        run: ./gradlew formatKotlin
+        run: ./gradlew versionCatalogUpdate
 
-      - uses: EndBug/add-and-commit@v8
+      - uses: EndBug/add-and-commit@v9
         with:
           default_author: github_actions
+          add: '*.kt'
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
+        with:
+          base: "dependencies"
+          branch: "dependencies-change"
+          title: "dependencies"
+          token: ${{ secrets.GITHUB_TOKEN }}
 
