@@ -11,7 +11,6 @@ import android.view.View
 
 class DrawPolyToPoly3Dots(context: Context) : View(context) {
 
-
     var p = Paint().apply {
         strokeWidth = 3f
         style = Paint.Style.STROKE
