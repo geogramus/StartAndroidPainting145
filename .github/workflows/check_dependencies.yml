@@ -36,7 +36,7 @@ jobs:
         uses: peter-evans/create-pull-request@v3
         with:
           branch: "dependencies"
-          base: main
+          base: master
           title: "dependencies"
           delete-branch: true
           token: ${{ secrets.GITHUB_TOKEN }}
