@@ -38,6 +38,11 @@ jobs:
           base: "master"
           branch: "dependencies"
           title: "dependencies"
-          token: ${{ secrets.GITHUB_TOKEN }}
           delete-branch: true
+          token: ${{ secrets.GITHUB_TOKEN }}
+          team-reviewers: |
+              owners
+              maintainers
+          milestone: 1
+          draft: true
 
