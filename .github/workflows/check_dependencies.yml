@@ -38,7 +38,7 @@ jobs:
           branch: "dependencies"
           base: master
           title: "dependencies"
-          delete-branch: true
+          delete-branch: false
           token: ${{ secrets.GITHUB_TOKEN }}
           team-reviewers: |
             owners
