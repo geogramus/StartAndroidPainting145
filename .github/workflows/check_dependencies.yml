@@ -26,7 +26,7 @@ jobs:
           java-version: 11
 
       - name: Run versionCatalogUpdate
-        run: ./gradlew versionCatalogUpdate
+        run: ./gradlew formatKotlin
 
       - uses: EndBug/add-and-commit@v9
         with:
